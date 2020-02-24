@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+.wrapper {
+    margin: 0 auto;
+    width: 980px;
+    position: relative;
+    font-size: 12px;
+    font-family: kaiti;
+    line-height: 1.2em;
+}
+
+li {
+    list-style-type: none;
+    float: left;
+    left: 0px;
+}
+
+#header_outer {
+    height: 100px;
+    border-color: green;
+    border-style: none none dashed none;
+    font-size: 2em;
+    width: 100%;
+    background-color: #222;
+}
+
+.nav_hover {
+    background-color: #555;
+}
+
+#logo {
+    height: 100px;
+    width: 400px;
+}
+
+#nav {
+    position: relative;
+    float: left;
+}
+
+#nav a {
+    font-size: 10px;
+    font-family: kaiti;
+    padding-top: 5px;
+}
+
+#nav>li>a {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    width: 140px;
+    float: left;
+    top: 50%;
+    margin: 0px 20px;
+    vertical-align: middle;
+    background-clip: border-box;
+    line-height: 96px;
+}
+
+#nav>li {
+    /* float: left;
+			left:100px;	 */
+    height: 100px;
+    /* background-color: gray; */
+}
+
+.user-info {
+    float: right;
+    height: 100%;
+    width: 200px;
+    line-height: 100px;
+    color: #fff;
+}
+
+.user-info > a {
+    color: #fff;
+    font-size: 12px;
+}
+
+.user-icon {
+    width: 20%;
+    vertical-align: middle;
+    border-radius: 50%;
+
+}
+
+.user-name {
+    width: 80%;
+    font-size: 15px;
+}
+
+.out {
+    width: 20%;
+}

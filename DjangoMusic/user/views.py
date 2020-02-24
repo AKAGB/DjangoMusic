@@ -71,3 +71,10 @@ def login(request):
             })
     else:
         return render(request, 'user/login.html')
+
+def index(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(r'/login/')
+    # 获取推荐音乐
+    # recommendData = recommend_music()
+    return render(request, "user/index.html")

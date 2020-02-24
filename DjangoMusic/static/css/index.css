@@ -1,0 +1,153 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(8, 26, 43);
+    color: rgb(255, 255, 255);
+}
+
+#main {
+    min-height: calc(100% - 203px);
+    position: relative;
+}
+
+#main > div {
+    width: 770px;
+    height: 500px;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#main > div > h1 {
+    font-size: 3em;
+    height: 100px;
+    width: 100%;
+    line-height: 100px;
+    text-align: center;
+}
+
+#container {
+    margin: 0 auto;
+    width: 770px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+#img-box {
+    width: 100%;
+    height: 100%;
+    white-space: nowrap;
+    font-size: 0;
+    position: relative;
+    text-align:center;
+
+}
+
+.slider-block {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+}
+.left {
+    left: -100%;
+}
+.middle {
+    left: 0%;
+}
+.right {
+    left: 100%;
+}
+.actionLeft {
+    animation: moveLeft 1s linear forwards;
+}
+.actionRight {
+    animation: moveRight 1s linear forwards;
+}
+
+#toLeft, #toRight {
+    width: 32px;
+    height: 80px;
+    background-image: url({{ STATIC_URL }}images/arrows-30.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    transform: translateY(-50%);
+    display: none;
+}
+
+#toLeft {
+    left: 10px;
+}
+
+#toRight {
+    background-position-y: 100%;
+    right: 10px;
+}
+
+#pointsContainer {
+    position: absolute;
+    z-index: 100;
+    right:  64px;
+    bottom: 15px;
+
+    width: 42px;
+    height: 12px;
+    font-size: 0px;
+    text-align: center;
+
+}
+
+.points, .active {
+    display: inline-block;
+    background-image: url({{ STATIC_URL }}images/navigator.png);
+    width: 12px;
+    height: 12px;
+    margin: 0 1px;
+}
+
+.active {
+    background-image: url({{ STATIC_URL }}}images/navigator.png);
+    background-position-y: 100%;
+}
+
+.playlist_img {
+    height: 250px;
+    width: 250px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.playlist_name {
+    position: absolute;
+    top: calc(10% + 260px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    width: 250px;
+    color: white;
+
+}
+
+@keyframes moveLeft {
+    0% {transform: translateX(0%);}
+    100% {transform: translateX(-100%);}
+}
+
+@keyframes moveRight {
+    0% {transform: translateX(0%);}
+    100% {transform: translateX(100%);}
+}

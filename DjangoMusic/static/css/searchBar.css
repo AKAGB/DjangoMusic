@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --iconsize: 30px;
+    --barHeight: 36px;
+    --iconbarW: 16px;
+    --iconbarH: 2px;
+    --textH: 50px;
+    --iconColor: #D96F32;
+    --inputW: 250px;
+    --bgclr: #092B40;
+}
+
+.icon-search {
+    width: var(--iconsize);
+    height: var(--iconsize);
+    border-radius: calc(var(--barHeight) / 2);
+    border: 3px solid var(--iconColor);
+    position: absolute;
+    top: 5%; left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+}
+
+.bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+    width: var(--iconbarW);
+    height: var(--iconbarH);
+    position: relative;
+    top: 30px;
+    left: 26px;
+    background-color: var(--iconColor);
+}
+
+.form-search, .rs-btn {
+    outline: none;
+    background: none;
+    border: 0;
+}
+
+.form-search {
+    width: var(--inputW);
+    height: calc(var(--barHeight) - 4px);
+    padding-left: 4%;
+    padding-right: 16%;
+    color: white;
+    display: none;
+}
+
+.rs-btn {
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    color: var(--iconColor);
+    display: none;
+}
+
+.labels {
+    height: var(--textH);
+    margin: auto;
+}
+
+.tips,
+.tips:hover,
+.tips:active,
+.tips:visited,
+.tips:link {
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    line-height: var(--textH);
+}
+
+.msg-container {
+    width: 80%;
+    margin: 30px auto;
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: transform 1.2s, opacity 1.2s;
+}
+
+.display-data {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2em;
+    height: 120px;
+    padding: 10px 5%;
+    margin: 10px auto;
+    transition: border 0.2s;
+}
+
+.display-data:hover {
+    border-left: rgb(255, 146, 3) 6px solid;
+    color: black;
+}
+
+.display-data h3 {
+    font-weight: bold;
+}
+
+.msg-link,
+.msg-link:hover,
+.msg-link:active,
+.msg-link:visited,
+.msg-link:link 
+ {
+    text-decoration: none;
+    color: #777;
+}
+
+#search-text {
+    font-size: 1.2em;
+
+}

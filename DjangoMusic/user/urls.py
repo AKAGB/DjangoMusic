@@ -1,8 +1,10 @@
-from django.urls import re_path
+from django.urls import path
 from . import views
 
 app_name = 'user'
 urlpatterns = [
-    re_path(r'^register/$', views.register, name='register'),
-    re_path(r'^login/$', views.login, name='login'),
+    path(r'register/', views.register, name='register'),
+    path(r'login/', views.login, name='login'),
+    path(r'index/', views.index),
+
 ]
