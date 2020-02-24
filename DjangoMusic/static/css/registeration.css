@@ -1,0 +1,27 @@
+h1 {
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #eee;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#logo {
+    text-align: center;
+    margin: 40px;
+}
+
+#logo > img {
+    height: 150px;
+}
+
