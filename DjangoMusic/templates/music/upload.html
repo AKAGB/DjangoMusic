@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fontawesome/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/upload.css" />
+    <title>音乐文件上传</title>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/upload.js"></script>
+    <script type="text/javascript">
+        var alertBool = '{{ alertBool }}';
+        if (alertBool == '1') {
+            alert('上传成功！');
+        }
+        else if(alertBool == '0'){
+            alert('上传失败，请检查是否空输入或文件格式不对应，请重新上传！')
+        }
+    </script>
+</head>
+<body>
+    {% include 'share_layout/nav.html' %}
+    <div class="apply">
+        <div class="apply_header"><span>音乐文件上传</span></div>
+        <div class="left">
+                <div class="left_con">
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                    专辑名:
+                </div>
+                <div class="left_con">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    歌曲名:
+                </div>
+                <div class="left_con">
+                    <i class="fa fa-male" aria-hidden="true"></i>
+                    歌手名:
+                </div>
+                
+                <div class="left_con">
+                    <i class="fa fa-music" aria-hidden="true"></i>
+                    音乐文件:
+                </div>
+                <div class="left_con">
+                <i class="fa fa-file" aria-hidden="true"></i>
+                歌词文件:
+                </div>
+                <div class="left_con">
+                    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                    歌曲配图:
+                </div>
+                
+        </div>
+        <div class="right">
+        <form method="post" action="/upload/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="right_con">
+                <input type="text" class="album" name="album_name" value = "{{error.0}}" required>
+            </div>
+            <div class="right_con">
+                <input type="text" class="song_name" name="songname" value = "{{error.1}}" required>
+            </div>
+            <div class="right_con">
+                <input type="text" class="singer" name="singer" value = "{{error.2}}" required>
+            </div>
+
+                <div class="file right_con">
+                <input type="file"  class="file_btn"  name="song_file"  value = "{{error.3}}" required>
+                </div>
+
+                <div class="file right_con">
+                <input type="file"  class="file_btn"  name="song_words_file"  value = "{{error.4}}" required>
+                </div>
+
+                <div class="file right_con">
+                <input type="file"  class="file_btn"  name="picture_file"  value = "{{error.5}}" required>
+                </div>
+
+            
+            <div class="right_con submit_btn">
+                <input type="submit" value="提交" class="submit" >
+            </div>
+        </form>
+        </div>
+    </div>
+
+</body>
+</html>

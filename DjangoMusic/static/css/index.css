@@ -76,7 +76,7 @@ body {
 #toLeft, #toRight {
     width: 32px;
     height: 80px;
-    background-image: url({{ STATIC_URL }}images/arrows-30.png);
+    background-image: url(/static/images/arrows-30.png);
     background-repeat: no-repeat;
     position: absolute;
     z-index: 100;
@@ -109,14 +109,14 @@ body {
 
 .points, .active {
     display: inline-block;
-    background-image: url({{ STATIC_URL }}images/navigator.png);
+    background-image: url(/static/images/navigator.png);
     width: 12px;
     height: 12px;
     margin: 0 1px;
 }
 
 .active {
-    background-image: url({{ STATIC_URL }}}images/navigator.png);
+    background-image: url(/static/images/navigator.png);
     background-position-y: 100%;
 }
 

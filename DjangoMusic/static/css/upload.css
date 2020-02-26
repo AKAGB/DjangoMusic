@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    margin: 0;
+}
+.apply{
+    position: relative;
+    height: 500px;
+    width: 800px;
+    margin: 80px auto;
+    border: 1px solid gray;
+    box-shadow: 2em 2em 3em #888, -1em -1em 3em #888;
+}
+.apply_header{
+    color: white;
+    height: 80px;
+    padding-left: 10px;
+    font-size: 1.2em;
+    background-color: rgb(8, 26, 43);
+    position: relative;
+    border-bottom: 1px solid white;
+}
+.apply_header span{
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+}
+
+.left{
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100px;
+    padding-left: 10px;
+    /* background-color: rgb(8, 26, 43); */
+    line-height: 200%
+}
+
+.right{
+    position: absolute;
+    top: 89px;
+    left: 120px;
+}
+.left_con,.right_con{
+    height: 50px;
+    width: 100px;
+}
+.album,.song_name,.singer{
+    width: 250px;
+    height: 30px;
+    outline: none;
+}
+.selection {
+    width: 200px;
+    height: 35px;
+    font-size: 1.1em;
+    outline: none;
+}
+.file,.submit{
+    height: 30px;
+    margin-bottom: 20px;
+    width: 120px;    
+    position: relative;
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding-left: 8px;
+    padding-top: 4px;
+    background-color: white;
+}
+.file{
+    height: 25px;
+    width: 78px;
+}
+.file:hover,.submit:hover{
+    box-shadow: 0.01em 0.01em 1em #888,-0.01em -0.01em 1em #888;
+    background-color: rgba(255, 255, 255, 0.993);
+}
+.file input{
+    position: absolute;
+    left: 0px;
+    top:0px;
+    font-size: 1.1em;
+}
+
+.submit{
+    padding: 0;
+    margin: 0;
+    font-size: 1.1em;
+}

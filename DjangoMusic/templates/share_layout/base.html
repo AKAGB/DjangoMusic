@@ -4,30 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css">
-    <script src="{{ STATIC_URL }}jquery/jquery.js"></script>
-    <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
-    <title>主页</title>
+    <title>Django 音乐网站</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}fontawesome/font-awesome.css">
+    
+    
 </head>
 
 <body>
-    <header>
-        {% include 'share_layout/nav.html' %}
-    </header>
-    
+    {% include 'share_layout/nav.html' %}
+
     <div id="main">
-        
         {% block content %}
         {% endblock %}
-
     </div>
 
-    <div id="footer">
-        {% include 'share_layout/footer.html' %}
-    </div>
+    {% include 'share_layout/footer.html' %}
+    
     <!--footer end-->    
 
-    <script src="{{ STATIC_URL }}Code/js/index_main.js"></script>
 </body>
 
 </html>

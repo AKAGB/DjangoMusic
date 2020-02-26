@@ -1,68 +1,42 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}fontawesome/font-awesome.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/navigation.css"/>
+{% extends 'share_layout/base.html' %}
+
+{% block content %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/index.css">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/footer.css"/>
     <link rel="stylesheet" href="{{ STATIC_URL }}css/searchBar.css">
+    
     <script type="text/javascript">
-        
         recommandMusic = JSON.parse('{{ recommendData }}'.replace(/&#39;/g, '"'));
-        console.log(recommandMusic);
     </script>
-</head>
 
-<body>
-    {% include 'share_layout/nav.html' %}
+    <form action="/Search/?value=" method="GET" class="icon-search">
+        <div class="bar"></div>
+        <input type="text" name="value" id="search-text" class="form-search" autocomplete="off" spellcheck="false">
+        <!-- <input type="text" name="" hidden> -->
+    
+        <button type="button" class="rs-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+    </form>
 
-    <div id="main">
-
-        <form action="/Search/?value=" method="GET" class="icon-search">
-            <div class="bar"></div>
-            <input type="text" name="value" id="search-text" class="form-search" autocomplete="off" spellcheck="false">
-            <!-- <input type="text" name="" hidden> -->
-           
-            <button type="button" class="rs-btn"><i class="fa fa-times" aria-hidden="true"></i></button>
-        </form>
-
-        <div>
-            <h1>推荐歌单</h1>
-            <div id="container">
-                <div id="img-box">
-                    <div class="slider-block middle" >
-                    </div>
-                    <div class="slider-block right" >
-                    </div>
-                    <div class="slider-block left" >
-                    </div>
+    <div>
+        <h1>推荐歌单</h1>
+        <div id="container">
+            <div id="img-box">
+                <div class="slider-block middle" >
                 </div>
-                <div id="toLeft"></div>
-                <div id="toRight"></div>
-                <div id="pointsContainer">
-                    <div id="point1" class="points active"></div>
-                    <div id="point1" class="points"></div>
-                    <div id="point1" class="points"></div>
+                <div class="slider-block right" >
+                </div>
+                <div class="slider-block left" >
                 </div>
             </div>
+            <div id="toLeft"></div>
+            <div id="toRight"></div>
+            <div id="pointsContainer">
+                <div id="point1" class="points active"></div>
+                <div id="point1" class="points"></div>
+                <div id="point1" class="points"></div>
+            </div>
         </div>
-        
     </div>
-
-    
-
-    <div id="footer">
-        <p>
-            &copy; Copyright GQK2020<br>
-        </p>
-    </div>
-    <!--footer end-->    
 
     <script src="{{ STATIC_URL }}js/index.js"></script>
-</body>
 
-</html>
+{% endblock %}
