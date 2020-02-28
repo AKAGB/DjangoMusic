@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    {% include 'share_layout/nav.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>single_playlist_info</title>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/single_playlist_info.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}fontawesome/font-awesome.css">
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.8.2/css/all.css" type="text/css" /> -->
+    <script type="text/javascript">
+        songs_result = JSON.parse('{{ songs_result }}'.replace(/&#39;/g, '"'));
+        playlists_result = JSON.parse('{{ playlists_result }}'.replace(/&#39;/g, '"'))[0];
+        // console.log(playlists_result);
+    </script>
+    <script src="{{ STATIC_URL }}js/single_playlist_info.js"></script> 
+</head>
+<body>
+
+    <div id="shadow">  
+    </div>  
+    <div class="add_toMylist">
+        <div class="words">
+        <span>添加到我的歌单</span>
+            <span class="close"> <i class="fa fa-times" aria-hidden="true"></i></span>
+        </div>
+    </div> 
+    <div class="container">
+        <div class="header">
+        </div>
+
+        <div class="songList">
+            <table>
+                <caption>歌曲列表</caption>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>操作</th>
+                        <th class="songList_header_name">歌曲</th>
+                        <th class="songList_header_author">歌手</th>
+                        <th class="songList_header_time">时长</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="songList_body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

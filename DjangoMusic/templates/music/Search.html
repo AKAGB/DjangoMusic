@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta content="text/html;charset=utf-8">
+    <title>歌曲列表</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/Search.css" type="text/css" />
+    <!-- <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.8.2/css/all.css" type="text/css" /> -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}fontawesome/font-awesome.css">
+
+    <script type="text/javascript">
+        songList_elemt = JSON.parse('{{ songs_result }}'.replace(/&#39;/g, '"'));
+        songListS_elemt = JSON.parse('{{ playlists_result }}'.replace(/&#39;/g, '"'));
+        value = '{{ value }}';
+        // var data = '{{ songs_result }}';
+    </script>
+    
+ 
+
+</head>
+<body>
+    {% include 'share_layout/nav.html' %}
+        <div id="shadow">  
+        </div>  
+        <div class="add_toMylist">
+            <div class="words">
+                <span>添加到我的歌单</span>
+                <span class="close"> <i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+            <!-- <div class="list_info">
+
+            </div>
+            <div class="list_info">
+
+            </div>    
+            <div class="list_info">
+
+                </div>      -->
+        </div> 
+        <div class="songlist">
+                <div class="search">
+                        <input class="search_text" id="search_word" cols="65" rows="1">
+                        <i class="fa fa-search"  id="search_icon" aria-hidden="true"></i>
+                        <a id="search_a" href="" hidden></a>
+                    </div>
+                    <div class="choose_mode"> 
+                        <span class="single_song"  > 单曲</span>
+                        <span class="songs"   > 歌单 </span>
+                    </div>
+                    
+                <table class="songT" id="t1">
+                        <caption>歌曲列表</caption>
+                            <thead class="songList_header">
+                                <tr>
+                                    <th ></th>
+                                    <th ></th>
+                                    <th class="songList_header_name">歌曲 </th>
+                                    <th class="songList_header_author">歌手 </th>
+                                    <th class="songList_header_album">专辑 </th>
+                                    <th class="songList_header_time">时长</th> 
+                                    <th ></th>
+                                </tr> 
+                            </thead>
+                            <tbody class="songList_main">
+                              
+                                
+                            </tbody>
+                    </table>
+
+                   
+
+
+                    <table class="songs_listT" id="t2">
+                        <caption>歌单列表</caption>
+                            <tr>
+                                <th ></th>
+                                <th class="songList_header_name">名称 </th>
+                                <th class="songList_header_author">歌曲数 </th>
+                                <th class="songList_header_album">创建者 </th>
+                                <th ></th>
+                            </tr> 
+                      
+                    </table>
+        </div>
+
+   
+</body>
+<script type="text/javascript" src="{{ STATIC_URL }}js/Search.js"></script>
+</html>

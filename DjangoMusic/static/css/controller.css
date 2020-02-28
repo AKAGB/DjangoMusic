@@ -1,0 +1,166 @@
+* {
+    margin: 0;
+    padding: 0;
+}   
+
+body {
+    background-color: rgba(22, 22, 5, 1);
+    color: #fff;
+}
+
+#controller {
+    width: 1200px;
+    height: 100px;
+    background-color: rgba(22, 22, 5, 1);
+    position: fixed;
+    bottom: 0;
+    line-height: 100px;
+    vertical-align: middle;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.player-controller {
+    position: absolute;
+    height: 100px;
+    line-height: 120px;
+}
+
+.player-controller > *:hover,
+.progress > *:hover {
+    cursor: pointer;
+}
+ 
+
+#music-player-controller > *:hover {
+    cursor: auto;
+}
+
+#play {
+    left: 72px;;
+    font-size: 1.4em;
+}
+
+#step-forward {
+    left: 155px;
+}
+
+#music-player-controller {
+    width: 60%;
+    left: 200px;
+}
+
+.progress {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.progress-bar {
+    height: 4px;
+    width: 100%;
+    border-top: 2px solid #666;
+    position: absolute;
+    top: 50%;
+}
+
+.progress-his {
+    height: 4px;
+    width: 0;
+    border-top: 2px solid #eee;
+    position: absolute;
+    top: 50%;
+}
+
+.progress-point {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    bottom: 50%;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#music-info {
+    height: 0;
+    position: absolute;
+    top: 30%;
+    left: 0%;
+    line-height: 0;
+    font-size: 115%;
+}
+
+#music-full-time {
+    position: absolute;
+    line-height: 0;
+    top: 30%;
+    right: 0;
+}
+
+#play-mode {
+    left: 945px;
+}
+/* 
+#add-music {
+    left: 990px;
+} */
+
+#download-music {
+    left: 990px;
+}
+
+#volume {
+    left: 1030px;
+}
+
+#volume-progress {
+    left: 1072px;
+    width: 100px;
+}
+
+#volume-progress > .progress-his {
+    width: 50%;
+}
+
+#volume-progress > .progress-point {
+    left: 50%;
+}
+
+.img-controller {
+    width: 26px;
+    height: 100%;
+}
+
+.img-controller > div {
+    background-image: url(../images/player.png);
+    background-repeat: no-repeat;
+    height: 24px;
+    width: 100%;
+    display: inline-block;
+}
+
+.play-mode-icon {
+    background-position: 0px -206px;
+}
+
+/* .add-music-icon {
+    background-image: url(../images/icon_sprite.png);
+    background-position: 0px -205px;
+} */
+
+.download-music-icon {
+    background-position: 0px -120px;
+}
+
+.volumn-icon {
+    background-position: 0px -143px;
+}
+
+/*
+random: -72px;
+laba: -145px;
+loop: -205px;
+*/

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}fontawesome/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/createlist.css" />
+    <title>音乐歌单创建</title>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/createlist.js"></script>
+    <script type="text/javascript">
+        var alertBool = '{{ alertBool }}';
+        if (alertBool == '1') {
+            alert('创建成功！');
+        } else if (alertBool == '0') {
+            alert('创建失败，请重新创建！');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="apply">
+        <div class="apply_header">
+            <span>歌单创建</span>
+        </div>
+        <div class="left">
+            <div class="left_con">
+                <i class="fa fa-tasks" aria-hidden="true"></i>
+                歌单名:
+            </div>
+            <div class="left_con">
+                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                歌单配图:
+            </div>
+
+        </div>
+        <div class="right">
+            <form method="post" action="/mymusic/createlist/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="right_con">
+                    <input type="text" class="album" name="playlistname" value="{{error.0}}">
+                </div>
+
+                <div class="file right_con">
+                    <input type="file" class="file_btn" name="picture_file" value="{{error.5}}">
+                </div>
+
+
+                <div class="right_con submit_btn">
+                    <input type="submit" value="提交" class="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+.search_text {
+    box-shadow: 0 0 10px gray;
+}
+
+.songlist {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 50%;
+}
+
+caption {
+    text-align: left;
+}
+
+th {
+    height: 35px;
+    text-align: left;
+}
+
+th:nth-child(-n+2) {
+    width: 20px;
+}
+
+.songList_main th {
+    color: gray;
+    height: 20px;
+    font-weight: lighter;
+}
+
+th:nth-child(3) {
+    width: 150px;
+}
+
+th:nth-child(4) {
+    width: 100px;
+}
+
+th:nth-child(5) {
+    /* display: inline; */
+    width: 100px;
+}
+
+th:nth-child(6) {
+    width: 100px;
+}
+
+table {
+    border: none;
+    width: 100%;
+}
+tr {
+    height: 35px;
+}
+
+.fa-play:hover {
+    cursor: pointer;
+}

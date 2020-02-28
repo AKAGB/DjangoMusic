@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+#right {
+    width: 450px;
+    height: 100%;
+    position: absolute;
+    right: 20px;
+}
+
+#Song_info {
+    width: 400px;
+    position: absolute;
+    top: 68px;
+    right: 20px;
+    padding: 5px 5px;
+    /* background-color: rebeccapurple; */
+}
+
+#singer_img {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+#Song_Word_box {
+    width: 400px;
+    height: 400px;
+    padding: 0 5px;
+    overflow: hidden;
+    position: absolute;
+    margin: auto;
+    top: 380px;
+    right: 20px;
+    /* background-color: rebeccapurple; */
+
+}
+
+#song_info_name,
+#song_info_singer,
+#song_info_album {
+    width: 200px;
+    height: 25px;
+    margin: 2px auto;
+    padding-left: 5em;
+    text-align: left;
+    color: white;
+}
+
+#Song_Word_inner {
+    position: absolute;
+    width: 100%;
+    top: 15px;
+    left: 0;
+    transition: top 0.8s;
+}
+
+p {
+    font-size: 1.2em;
+    font-family: 楷体;
+    margin: 3px;
+    padding: 2px;
+    color: white;
+}

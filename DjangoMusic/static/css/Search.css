@@ -1,0 +1,222 @@
+body {
+    background-color: rgb(8, 26, 43);
+}
+
+#shadow { position:absolute;
+    display:block;
+    top:0;
+    left:0;
+    z-index:80;  
+    background-color:gray;
+    opacity:0.5;
+}  
+    
+.add_toMylist{
+    overflow-y:scroll;
+    z-index:900;
+    position:absolute;
+    display: none;
+    width:600px;  
+	height:200px;  
+    left:800px;
+    top:300px;  
+    box-shadow:6px 8px 4px #808080; 
+    background-color: white;
+}
+
+.list_img{
+    float: left;
+    height: 40px;
+    width: 40px;
+}
+.list_name{
+    
+}
+.list_num{
+    /* background-color: blue; */
+    float: right;
+}
+
+.close{
+    float: right;
+    
+}
+.add_toMylist div{
+    border-bottom: 1px solid black;
+}
+.add_toMylist .words{
+    height: 40px;
+    text-align: center;
+    font-size: 1.5em;
+    color: rgb(8, 26, 43);
+}
+
+.list_info{
+    height:40px ;
+}
+
+.list_info:hover{
+    background-color: gray;
+}
+
+.search{
+    position: absolute;
+    top:20%;
+    left: 25%;
+}
+.search_text{
+    box-shadow: 0 0 10px gray inset;
+    position: relative;
+    height: 29px;
+    width: 400px;
+    font-size: 1.25em;
+}
+#search_icon{
+    position: relative;
+    top:3px;
+    height: 35px;
+    color: white;
+    font-size: 2em;
+    width: 35px;
+    box-shadow: 0 0 10px gray inset;
+}
+
+.choose_mode{
+    color: white;
+    position: absolute;
+    float:left;
+    left:15%;
+    top:30%;
+    background-color: rgb(102, 100, 96);
+}
+
+.single_song{
+    background-color: skyblue;
+}
+.songs{
+    background-color: rgb(102, 100, 96);
+}
+
+.songT{
+    display: inline;
+}
+.songs_listT{
+    display: none;
+}
+/* 
+span{
+   border-right-style: solid;
+   border-right-color: black;
+} */
+
+.songlist{
+        position: absolute;
+        top:0%;
+        left: 25%;
+        width: 50%;
+        height: 100%;
+        background-color: rgb(8, 26, 43); 
+        z-index:-1;
+}
+
+table{
+    position: absolute;
+    float:left;
+    left:15%;
+    top:35%;
+    border: 0px;
+    color: white;
+    border-collapse:collapse;
+}
+
+a{
+    color:white;
+}
+
+.songT caption{
+    text-align: left;
+}
+.songT th{
+    border: none;
+    height: 35px;
+    text-align: left;
+}
+.songT th:nth-child(-n+2){
+    width: 50px;
+}
+.songList_header tr{
+    box-shadow: 0 0 10px gray inset;
+   background-color: rgb(102, 100, 96); 
+}
+
+.songList_main th{
+    color: white;
+    height: 35px;
+    font-weight: lighter;
+}
+.songT th:nth-child(3){
+    width: 150px;
+}
+.songT th:nth-child(4){
+    width: 100px;
+}
+.songT th:nth-child(5){
+    /* display: inline; */
+    width: 150px;
+}
+.songT th:nth-child(6){
+    width: 100px;
+}
+.songT tr:nth-child(even)
+{
+    background-color: rgb(37, 37, 25);
+}
+
+
+
+.songs_listT caption{
+    text-align: left;
+}
+
+.songs_listT th{
+    border: none;
+    height: 35px;
+    text-align: left;
+}
+.songs_listT  th{
+    color: white;
+    height: 35px;
+    font-weight: lighter;
+}
+.songs_listT th:nth-child(1){
+    width: 100px;
+}
+.songs_listT th:nth-child(2){
+    width: 100px;
+}
+.songs_listT th:nth-child(3){
+    width: 100px;
+}
+.songs_listT th:nth-child(4){
+    width: 100px;
+}
+.songs_listT th:nth-child(5){
+    width: 100px;
+}
+
+
+.songs_listT tr:nth-child(1){
+    font-weight: 800;
+    background-color: rgb(102, 100, 96); 
+    
+}
+
+.songs_listT tr:nth-child(even){
+    font-weight: 800;
+    background-color:  rgb(37, 37, 25);; 
+    font-weight: lighter;
+}
+
+.single_song:hover, .songs:hover {
+    cursor: pointer;
+}
