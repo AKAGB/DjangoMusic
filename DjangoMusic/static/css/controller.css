@@ -37,17 +37,17 @@ body {
 }
 
 #play {
-    left: 72px;;
+    left: 62px;;
     font-size: 1.4em;
 }
 
 #step-forward {
-    left: 155px;
+    left: 145px;
 }
 
 #music-player-controller {
     width: 60%;
-    left: 200px;
+    left: 190px;
 }
 
 .progress {
@@ -101,7 +101,11 @@ body {
 }
 
 #play-mode {
-    left: 945px;
+    left: 930px;
+}
+
+#music-comment {
+    left: 970px;
 }
 /* 
 #add-music {
@@ -109,15 +113,15 @@ body {
 } */
 
 #download-music {
-    left: 990px;
+    left: 1012px;
 }
 
 #volume {
-    left: 1030px;
+    left: 1049px;
 }
 
 #volume-progress {
-    left: 1072px;
+    left: 1088px;
     width: 100px;
 }
 
@@ -144,6 +148,10 @@ body {
 
 .play-mode-icon {
     background-position: 0px -206px;
+}
+
+.music-comment-icon {
+    background-position: 0px -400px;
 }
 
 /* .add-music-icon {

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from user.models import MusicUser
 from .models import Playlist, Song
 from django.forms.models import model_to_dict
-from django.http import HttpResponseRedirect, HttpResponse,JsonResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
@@ -26,7 +26,7 @@ class ComplexEncoder(json.JSONEncoder):
 
 @login_required
 def mymusic(request, success=4):
-    music_user = MusicUser.objects.filter(user=request.user)[0]
+    music_user = request.user
     collect = music_user.collect_user.all()
     build = music_user.build_user.all()
     collect_list = list(collect.values())
@@ -108,7 +108,6 @@ def upload(request):
             flag = False
         #按要求输入相关数据和文件后进行数据处理
         if flag:
-            music_user = MusicUser.objects.filter(user=request.user)[0]
             thesong = Song.objects.create(
                     songname = songname,
                     singer = singer,
@@ -117,7 +116,7 @@ def upload(request):
                     song_url = "song_url",
                     picture_url = "picture_url",
                     song_time = "song_time",
-                    userid = music_user
+                    userid = request.user
                 )
             id=thesong.id
             #歌曲文件及路径名
@@ -173,21 +172,31 @@ def upload(request):
                     "style2":"nav_hover"
                 })
 
-@login_required
-def search(request):
+def search_playlist(user, value):
     """
-    搜索歌曲或歌单
+    根据关键字搜索歌单
     """
+    playlists = Playlist.objects.filter(playlistname__icontains=value)
+    playlists_result = []
+    tmep_playlists_result = list(playlists.all().values())
+    for each_playlist in tmep_playlists_result:
+        dict_playlist = {}
+        dict_playlist.update({"playlist_id":each_playlist["id"]})
+        dict_playlist.update({"songListT_name":each_playlist["playlistname"]})
 
-    value = request.GET.get("value",None)
-    songs_result = search_music(value)
-    username = request.user.username
-    playlists_result = search_playlist(username,value)
-    return render(request, 'music/Search.html', {
-        'value': value,
-        'songs_result': songs_result,
-        'playlists_result' : playlists_result
-    })
+        play = Playlist.objects.filter (id = each_playlist["id"])
+        song_num = len(play[0].songs.all().values())
+
+        dict_playlist.update({"songListT_num":song_num})
+        dict_playlist.update({"songList_songauthor":play[0].build_user.username})
+        if len(play[0].collectuser.all().filter(username=user.username)) > 0:
+            # 已收藏
+            dict_playlist.update({"playlist_flag":"1"})
+        else:
+            # 未收藏
+            dict_playlist.update({"playlist_flag":"0"})
+        playlists_result.append(dict_playlist)
+    return playlists_result
 
 def search_music(value):
     """
@@ -209,31 +218,22 @@ def search_music(value):
         songs_result.append(dict_song)
     return songs_result
 
-def search_playlist(username,value):
+@login_required
+def search(request):
     """
-    根据关键字搜索歌单
+    搜索歌曲或歌单
     """
-    playlists = Playlist.objects.filter (playlistname__icontains=value)
-    playlists_result = []
-    tmep_playlists_result = list(playlists.all().values())
-    for each_playlist in tmep_playlists_result:
-        dict_playlist = {}
-        dict_playlist.update({"playlist_id":each_playlist["id"]})
-        dict_playlist.update({"songListT_name":each_playlist["playlistname"]})
 
-        play=Playlist.objects.filter (id = each_playlist["id"])
-        song_num = len(play[0].songs.all().values())
-
-        dict_playlist.update({"songListT_num":song_num})
-        dict_playlist.update({"songList_songauthor":play[0].build_user.user.username})
-        if len(play[0].collectuser.all().filter(username=username)) > 0:
-            # 已收藏
-            dict_playlist.update({"playlist_flag":"1"})
-        else:
-            # 未收藏
-            dict_playlist.update({"playlist_flag":"0"})
-        playlists_result.append(dict_playlist)
-    return playlists_result
+    value = request.GET.get("value",None)
+    songs_result = search_music(value)
+    user = request.user
+    playlists_result = search_playlist(user, value)
+    return render(request, 'music/Search.html', {
+        'value': value,
+        'songs_result': songs_result,
+        'playlists_result' : playlists_result,
+        'username': user.username
+    })
 
 @login_required
 def music_player_song(request):
@@ -246,6 +246,7 @@ def music_player_song(request):
     return render(request, 'music/music_player.html', {
         'songid' : songid,
         'songs_result': songs_result,
+        'username': request.user.username
     })
 
 @login_required
@@ -273,6 +274,7 @@ def music_player_playlist(request):
     return render(request, 'music/music_player.html', {
         'songid' : songid,
         'songs_result': songs_result,
+        'username': request.user.username
     })
 
 @login_required
@@ -294,7 +296,7 @@ def single_playlist_info(request):
 
     song_num = len(p[0].songs.all().values())
     dict_playlist.update({"playList_num":song_num})
-    dict_playlist.update({"playList_build_user":p[0].build_user.user.username})
+    dict_playlist.update({"playList_build_user":p[0].build_user.username})
     playlists_result.append(dict_playlist)
 
     # 歌曲相关字典
@@ -314,6 +316,7 @@ def single_playlist_info(request):
     return render(request, 'music/single_playlist_info.html', {
         'playlists_result': playlists_result,
         'songs_result': songs_result,
+        'username': request.user.username,
     })
 
 
@@ -337,7 +340,6 @@ def get_music_detail(request):
             'words':words,
             'picture_url': picture_url
             }
-    print(words)  
     return JsonResponse(jsondata, json_dumps_params={'ensure_ascii':False})
 
 @login_required
@@ -349,7 +351,7 @@ def playlist(request):
     p = Playlist.objects.filter(id=playlistid)
     playlist = p.all().values()[0]
     songs = list(p[0].songs.all().values())
-    playlist['build_user'] = p[0].build_user.user.username
+    playlist['build_user'] = p[0].build_user.username
     playlist['songs_counts'] = len(songs)
     playlist['songs'] = json.dumps(songs, cls=ComplexEncoder)
     playlist['attrs'] = Song.getattr()
@@ -367,7 +369,7 @@ def createlist(request):
         playlistname = request.POST.get('playlistname', None)
         build_user = request.user
         picture_file = request.FILES.get("picture_file",None)
-        pl = Playlist.objects.filter(playlistname=playlistname,build_user=request.user)
+        pl = Playlist.objects.filter(playlistname=playlistname, build_user=build_user)
         if len(pl) != 0:
             message = '歌单名已存在，请重新输入！'
             return render(request, 'music/createlist.html', {
@@ -411,13 +413,11 @@ def remove_playlist(request):
     if playlist.build_user == request.user:  #删除用户自建的歌单
         # 检查是否为系统默认歌单，默认歌单无法删除
         if playlist.playlistname == str(request.user.username)+"_发布的音乐" or playlist.playlistname == str(request.user.username)+"_喜欢的音乐":
-            print("【无法删除系统默认创建歌单】")
             return mymusic(request, 0)
         else:
             playlist.delete()
             return mymusic(request, 1)
     elif request.user in list(playlist.collectuser.all()): #删除用户收藏的歌单
-        print("【移除了用户"+str(request.user.username)+"收藏的"+str(playlist.playlistname))
         playlist.collectuser.remove(request.user)
         return mymusic(request, 2)
 
@@ -426,10 +426,10 @@ def getsonglist(request):
     """
     获取当前用户所创建的歌单
     """
-    theuser = MusicUser.objects.filter(user=request.user)[0]
-    build = Playlist.objects.filter(build_user = theuser).exclude(playlistname = "%s_发布的音乐" % theuser.user.username)
+    theuser = request.user
+    build = Playlist.objects.filter(build_user = theuser).exclude(playlistname = "%s_发布的音乐" % theuser.username)
     result = [{"play_listid":x.id,"list_img":x.picture_url,"list_num":len(list(x.songs.all())),"list_name":x.playlistname} for x in build]
-    print(result)
+
     return JsonResponse( result,safe=False,json_dumps_params={'ensure_ascii':False})
 
 @login_required
@@ -437,7 +437,7 @@ def remove_song(request):
     """
     删除歌曲
     """
-    theuser = MusicUser.objects.filter(user=request.user)[0]
+    theuser = request.user
     songid =  request.GET.get('songid', None)
     songlistid =  request.GET.get('songlistid', None)
     if songid == None or  songlistid == None:
@@ -455,7 +455,7 @@ def remove_song(request):
 
 @login_required
 def add_song(request):
-    theuser = MusicUser.objects.filter(user=request.user)[0]
+    theuser = request.user
     songid =  request.GET.get('songid', None)
     songlistid =  request.GET.get('songlistid', None)
     if songid == None or  songlistid == None:
@@ -475,7 +475,7 @@ def add_songlist(request):
     """
     添加歌曲，前台利用ajax技术
     """
-    theuser = MusicUser.objects.filter(user=request.user)[0]
+    theuser = request.user
     songlistid = request.GET.get("songlistid",None)
     if songlistid == None:
         return JsonResponse({"message":"parameters errors"})

@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import MusicUser
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 # Create your models here.
@@ -9,7 +9,7 @@ class Song(models.Model):
     singer = models.CharField(max_length=255)
     song_url = models.CharField(max_length=255)
     picture_url = models.CharField(max_length=255)
-    userid = models.ForeignKey(MusicUser, models.DO_NOTHING, db_column='userid')
+    userid = models.ForeignKey(User, models.DO_NOTHING, db_column='userid')
     album_name = models.CharField(max_length=255)
     words = models.CharField(max_length=4095)
     isvalid = models.IntegerField(default=1)
@@ -44,17 +44,17 @@ class Song(models.Model):
 
 class Playlist(models.Model):
     playlistname = models.CharField(max_length=255)
-    build_user = models.ForeignKey(MusicUser, related_name='build_user', on_delete=True, default=1)
+    build_user = models.ForeignKey(User, related_name='build_user', on_delete=True, default=1)
     build_date = models.DateField(default=timezone.now)
     picture_url = models.CharField(max_length=255)
     
-    collectuser = models.ManyToManyField(MusicUser, related_name = "collect_user")
+    collectuser = models.ManyToManyField(User, related_name = "collect_user")
     songs = models.ManyToManyField(Song,blank=True)
     
     def __str__(self):
         return self.playlistname
     
-    @ staticmethod
+    @staticmethod
     def getattr():
         return ['playlistname','build_user','build_date']
     

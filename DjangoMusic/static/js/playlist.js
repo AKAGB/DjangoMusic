@@ -19,7 +19,7 @@ window.onload = function(){
                 var a = document.createElement("a");
                 a.setAttribute("href","/single_playlist_info/?id=" + id);
                 a.innerHTML = selfcreated_playlist[i][key];
-                a.style.color = "white";
+                a.style.color = "black";
                 a.style.textDecoration = 'none';
                 td.appendChild(a);
                 tr.appendChild(td);
@@ -58,7 +58,7 @@ window.onload = function(){
                 var a = document.createElement("a");
                 a.setAttribute("href","/single_playlist_info/?id=" + id);
                 a.innerHTML = collection_playlist[i][key];
-                a.style.color = "white";
+                a.style.color = "black";
                 a.style.textDecoration = 'none';
                 td.appendChild(a);
                 tr.appendChild(td);

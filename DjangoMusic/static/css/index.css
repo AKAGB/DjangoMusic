@@ -4,13 +4,16 @@ html {
 
 body {
     height: 100%;
-    background-color: rgb(8, 26, 43);
-    color: rgb(255, 255, 255);
+}
+
+h1 {
+    text-align: center;
 }
 
 #main {
     min-height: calc(100% - 203px);
     position: relative;
+    background-color: #e0e0e0;
 }
 
 #main > div {
@@ -138,7 +141,7 @@ body {
     transform: translateX(-50%);
     font-size: 20px;
     width: 250px;
-    color: white;
+    color: black;
 
 }
 

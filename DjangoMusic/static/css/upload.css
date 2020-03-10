@@ -1,22 +1,33 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-html{
+
+html {
     height: 100%;
 }
-body{
+
+body {
     margin: 0;
+    height: 100%;
+    background-color: #e0e0e0;
 }
-.apply{
+
+#main {
+    min-height: calc(100% - 283px);
+}
+
+.apply {
     position: relative;
     height: 500px;
     width: 800px;
     margin: 80px auto;
     border: 1px solid gray;
     box-shadow: 2em 2em 3em #888, -1em -1em 3em #888;
+    border-radius: 20px;
 }
-.apply_header{
+
+.apply_header {
     color: white;
     height: 80px;
     padding-left: 10px;
@@ -24,14 +35,17 @@ body{
     background-color: rgb(8, 26, 43);
     position: relative;
     border-bottom: 1px solid white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
-.apply_header span{
+
+.apply_header span {
     position: absolute;
     left: 10px;
     bottom: 20px;
 }
 
-.left{
+.left {
     position: absolute;
     top: 80px;
     left: 0;
@@ -41,30 +55,38 @@ body{
     line-height: 200%
 }
 
-.right{
+.right {
     position: absolute;
     top: 89px;
     left: 120px;
 }
-.left_con,.right_con{
+
+.left_con,
+.right_con {
     height: 50px;
     width: 100px;
 }
-.album,.song_name,.singer{
+
+.album,
+.song_name,
+.singer {
     width: 250px;
     height: 30px;
     outline: none;
 }
+
 .selection {
     width: 200px;
     height: 35px;
     font-size: 1.1em;
     outline: none;
 }
-.file,.submit{
+
+.file,
+.submit {
     height: 30px;
     margin-bottom: 20px;
-    width: 120px;    
+    width: 120px;
     position: relative;
     border: 1px solid gray;
     border-radius: 4px;
@@ -72,22 +94,26 @@ body{
     padding-top: 4px;
     background-color: white;
 }
-.file{
+
+.file {
     height: 25px;
     width: 78px;
 }
-.file:hover,.submit:hover{
-    box-shadow: 0.01em 0.01em 1em #888,-0.01em -0.01em 1em #888;
+
+.file:hover,
+.submit:hover {
+    box-shadow: 0.01em 0.01em 1em #888, -0.01em -0.01em 1em #888;
     background-color: rgba(255, 255, 255, 0.993);
 }
-.file input{
+
+.file input {
     position: absolute;
     left: 0px;
-    top:0px;
+    top: 0px;
     font-size: 1.1em;
 }
 
-.submit{
+.submit {
     padding: 0;
     margin: 0;
     font-size: 1.1em;

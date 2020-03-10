@@ -29,7 +29,6 @@ def recommend_music():
         dict_list.update({"list_name":each_list["playlistname"]})
         dict_list.update({"list_picture":each_list["picture_url"]})
         list_result.append(dict_list)
-    print(list_result)
     return list_result
 
 def register(request):
@@ -77,12 +76,12 @@ def register(request):
         # 给新创建的用户创建歌单
         Playlist.objects.create(
             playlistname = str(username) + '_发布的音乐',
-            build_user = music_user,
+            build_user = user,
             picture_url = '/static/images/system_image_file/发布的音乐.jpg'
         )
         Playlist.objects.create(
             playlistname = str(username) + '_喜欢的音乐',
-            build_user = music_user,
+            build_user = user,
             picture_url = '/static/images/system_image_file/喜欢的音乐.jpg'
         )
         auth.login(request, user)

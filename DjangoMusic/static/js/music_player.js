@@ -265,23 +265,28 @@ window.onload = function () {
 
     //同步歌词
     function setLyricsTime() {
-        var index = 0;
+        var index = 0, height, ori = 15;
         var inner = document.getElementById("Song_Word_inner");
+        var ps = document.getElementsByClassName('lyric_word_p');
         for (; index < lyric_time.length - 1; index++) {
             if (audio.currentTime >= lyric_time[index] && audio.currentTime < lyric_time[index + 1]) {
                 break;
             }
+            var height = ps[index].offsetHeight;
+            ori = ori - height;
         }
         if (index == lyric_time.length - 1 && lyric_time[0] > audio.currentTime) {
             index = 0;
+            ori = 15;
         }
-        var ps = document.getElementsByClassName('lyric_word_p');
+        
         if (ps.length <= 2) {
             inner.style.top = 15 + 'px';
             return;
         }
-        var height = ps[2].offsetHeight;
-        inner.style.top = -height * index + 'px';
+        
+        
+        inner.style.top = ori + 'px';
         inner.children[index].style.fontSize = '1.5em';
         inner.children[index].style.color = 'yellow';
         for (var i = index - 1; i >= 0; i--) {
@@ -304,6 +309,12 @@ window.onload = function () {
         else
             this.style.backgroundPosition = '0px -72px';
 
+    }
+
+    // 新窗口打开评论
+    function OpenComment() {
+        //console.log('/comment/?songid=' + musicList[cur_music]['song_id']);
+        window.open('/comment/?songid=' + musicList[cur_music]['song_id']);
     }
 
     // 切下一首歌Click
@@ -354,6 +365,7 @@ window.onload = function () {
         progress = document.getElementsByClassName('progress'),
         volumeButton = document.querySelector('#volume .volumn-icon'),
         playModeButton = document.querySelector('.play-mode-icon'),
+        openCommentButton = this.document.querySelector('.music-comment-icon'),
         nextButton = document.querySelector('#step-forward i'),
         previousButton = document.querySelector('#step-backward i'),
         downloadButton = document.querySelector('.download-music-icon');
@@ -365,6 +377,7 @@ window.onload = function () {
     audio.onended = getNext;
     volumeButton.onclick = volumeClick;
     playModeButton.onclick = playModeClick;
+    openCommentButton.onclick = OpenComment;
     nextButton.onclick = getNext;
     previousButton.onclick = getPrevious;
     downloadButton.onclick = downloadClick;

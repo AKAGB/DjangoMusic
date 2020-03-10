@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    {% include 'share_layout/nav.html' %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -18,7 +16,7 @@
     <script src="{{ STATIC_URL }}js/single_playlist_info.js"></script> 
 </head>
 <body>
-
+        {% include 'share_layout/nav.html' %}
     <div id="shadow">  
     </div>  
     <div class="add_toMylist">
@@ -50,5 +48,7 @@
             </table>
         </div>
     </div>
+
+    {% include 'share_layout/footer.html' %}
 </body>
 </html>

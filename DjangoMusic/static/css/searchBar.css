@@ -48,7 +48,7 @@
     height: calc(var(--barHeight) - 4px);
     padding-left: 4%;
     padding-right: 16%;
-    color: white;
+    color: black;
     display: none;
 }
 
@@ -71,7 +71,7 @@
 .tips:visited,
 .tips:link {
     text-align: center;
-    color: white;
+    color: black;
     text-decoration: none;
     font-size: 1.2em;
     line-height: var(--textH);
