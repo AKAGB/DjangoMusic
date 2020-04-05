@@ -128,7 +128,7 @@ window.onload = function () {
     function like_color() {
         collect_playlist(this.id);
         if (this.selected)
-            this.style.color = '#fff';
+            this.style.color = '#000';
         else
             this.style.color = '#f00';
         this.selected = !this.selected;

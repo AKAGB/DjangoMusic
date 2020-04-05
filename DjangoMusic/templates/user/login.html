@@ -13,6 +13,9 @@
         function ToRegister() {
             window.location.href = "/register/";
         }
+        function ToAdmin() {
+            window.location.href = '/admin/';
+        }
         var error = '{{ error }}';
         if (error)
             alert(error);
@@ -52,6 +55,11 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <button onclick="ToRegister()" class="btn btn-primary btn-block">去注册</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button onclick="ToAdmin()" class="btn btn-primary btn-block">管理员登录</button>
                     </div>
                 </div>
             </form>

@@ -4,15 +4,19 @@ from django.utils import timezone
 
 # Create your models here.
 class Song(models.Model):
-    songname = models.CharField(max_length=255)
-    song_time = models.CharField(max_length=255)
-    singer = models.CharField(max_length=255)
-    song_url = models.CharField(max_length=255)
+    songname = models.CharField(max_length=255, verbose_name='歌曲名')
+    song_time = models.CharField(max_length=255, verbose_name='歌曲时长')
+    singer = models.CharField(max_length=255, verbose_name='歌手')
+    song_url = models.CharField(max_length=255, verbose_name='歌曲url')
     picture_url = models.CharField(max_length=255)
     userid = models.ForeignKey(User, models.DO_NOTHING, db_column='userid')
-    album_name = models.CharField(max_length=255)
+    album_name = models.CharField(max_length=255, verbose_name='专辑名')
     words = models.CharField(max_length=4095)
     isvalid = models.IntegerField(default=1)
+
+    class Meta:
+        verbose_name = '歌曲'
+        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.songname
@@ -43,14 +47,18 @@ class Song(models.Model):
         return result
 
 class Playlist(models.Model):
-    playlistname = models.CharField(max_length=255)
-    build_user = models.ForeignKey(User, related_name='build_user', on_delete=True, default=1)
-    build_date = models.DateField(default=timezone.now)
+    playlistname = models.CharField(max_length=255, verbose_name='歌单名')
+    build_user = models.ForeignKey(User, related_name='build_user', on_delete=True, default=1, verbose_name='创建者')
+    build_date = models.DateField(default=timezone.now, verbose_name='创建日期')
     picture_url = models.CharField(max_length=255)
     
     collectuser = models.ManyToManyField(User, related_name = "collect_user")
     songs = models.ManyToManyField(Song,blank=True)
     
+    class Meta:
+        verbose_name = '歌单'
+        verbose_name_plural = verbose_name
+
     def __str__(self):
         return self.playlistname
     
